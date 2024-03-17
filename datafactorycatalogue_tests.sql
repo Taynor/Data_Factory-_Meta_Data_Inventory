@@ -1,351 +1,321 @@
 /*first test batch*/
+/*INSERT test values*/
 INSERT INTO [staging].[AzDataFactoryV2DataFlow]
-VALUES ('insert_test_0e00d050-0000-0c00-0000-64fafdde0000', 'cdc-az-dev-datafactory', 
-'insert_test_DF_ICECurvesFlow', 'CDC-AZ-DEV-DataFactory')
+VALUES
+    ('insert_test_00000000-0000-0000-0000-000000000000', 'datafactory_name',
+        'insert_test_dataflow_name', 'resource_group_name')
 
 INSERT INTO [staging].[AzDataFactoryV2Dataset]
-VALUES ('insert_test_3a00b392-0000-0c00-0000-63eb5f670000', 'cdc-az-dev-datafactory',
-'insert_test_FundUnderlyingConnectionsSQL',	'CDC-AZ-DEV-DataFactory')
+VALUES
+    ('insert_test_00000000-0000-0000-0000-000000000000', 'datafactory_name',
+        'insert_test_dataset_name', 'resource_group_name')
 
-INSERT INTO [staging].[AzDataFactoryV2GlobalParametersDevelopment]
-VALUES ('insert_test_adls_container_name', 'insert_test_datalake-dev')
-
-INSERT INTO [staging].[AzDataFactoryV2GlobalParametersProduction]
-VALUES ('insert_test_adls_container_name', 'insert_test_datalake')
-
-INSERT INTO [staging].[AzDataFactoryV2GlobalParametersQA]
-VALUES ('insert_test_adls_container_name', 'insert_test_datalake-qa')
+INSERT INTO [staging].[AzDataFactoryV2GlobalParameters]
+VALUES
+    ('datafactory_name', 'resource_group_name', 'insert_test_global_parameter_key',
+        'insert_test_global_parameter')
 
 INSERT INTO [staging].[AzDataFactoryV2IntegrationRuntime]
-VALUES ('cdc-az-dev-datafactory', 'insert_test_managedIntegrationRuntime',	
-NULL, NULL, 'insert_test_Managed_renamed', 'CDC-AZ-DEV-DataFactory')
+VALUES
+    ('datafactory_name', 'insert_test_integration_runtime_name',
+        NULL, NULL, 'insert_test_integration_runtime_type', 'resource_group_name')
 
 INSERT INTO [staging].[AzDataFactoryV2LinkedService]
-VALUES ('insert_test_9a0035b8-0000-0c00-0000-62669f210000', 'cdc-az-dev-datafactory',	
-'insert_test_AzureSqlDB_Private', 'CDC-AZ-DEV-DataFactory')
+VALUES
+    ('insert_test_00000000-0000-0000-0000-000000000000', 'datafactory_name',
+        'insert_test_linked_service', 'resource_group_name')
 
 INSERT INTO [staging].[AzDatafactoryV2Pipeline]
-VALUES ('insert_test_0e000751-0000-0c00-0000-64fafde90000',	'cdc-az-dev-datafactory',
-'insert_test_Master', 'CDC-AZ-DEV-DataFactory')
+VALUES
+    ('insert_test_00000000-0000-0000-0000-000000000000', 'datafactory_name',
+        'insert_test_pipeline', 'resource_group_name')
 
 INSERT INTO [staging].[AzDataFactoryV2Trigger]
-VALUES ('insert_test_0e003751-0000-0c00-0000-64fafdef0000',	'cdc-az-dev-datafactory',
-'insert_test_Deal_CSV_Added', 'insert_test_Stopped', 'CDC-AZ-DEV-DataFactory')
+VALUES
+    ('insert_test_00000000-0000-0000-0000-000000000000', 'datafactory_name',
+        'insert_test_trigger_name', 'insert_test_runtime_state', 'resource_group_name')
 
+/*UPDATE test values*/
 UPDATE [staging].[AzDataFactoryV2DataFlow]
-SET [name] = 'DF_ICECurvesFlow_renamed'
-WHERE [name] = 'DF_ICECurvesFlow'
+SET [name] = 'dataflow_name_renamed'
+WHERE [name] = 'dataflow_name'
 
 UPDATE [staging].[AzDataFactoryV2Dataset]
-SET [name] = 'FundUnderlyingConnectionsSQL_renamed'
-WHERE [name] = 'FundUnderlyingConnectionsSQL'
+SET [name] = 'dataset_name_renamed'
+WHERE [name] = 'dataset_name'
 
 UPDATE [staging].[AzDataFactoryV2IntegrationRuntime]
-SET [Type] = 'Managed_renamed'
-WHERE [Type] = 'Managed'
+SET [Type] = 'integration_runtime_type_renamed'
+WHERE [Type] = 'integration_runtime_type'
 
 UPDATE [staging].[AzDataFactoryV2LinkedService]
-SET [name] = 'AzureSqlDB_Private_renamed'
-WHERE [name] = 'AzureSqlDB_Private'
+SET [name] = 'linked_service_name_renamed'
+WHERE [name] = 'linked_service_name'
 
 UPDATE [staging].[AzDatafactoryV2Pipeline]
-SET [name] = 'Master_renamed'
-WHERE [name] = 'Master'
+SET [name] = 'pipeline_name_renamed'
+WHERE [name] = 'pipeline_name'
 
 UPDATE [staging].[AzDataFactoryV2Trigger]
-SET [name] = 'Deal_CSV_Added_renamed'
-WHERE [name] = 'Deal_CSV_Added'
+SET [name] = 'trigger_name_renamed'
+WHERE [name] = 'trigger_name'
 
-UPDATE [staging].[AzDataFactoryV2GlobalParametersDevelopment]
-SET [GlobalParameterValue] = 'datalake-dev_renamed'
-WHERE [GlobalParameterValue] = 'datalake-dev'
-
-UPDATE [staging].[AzDataFactoryV2GlobalParametersQA]
-SET [GlobalParameterValue] = 'datalake-qa_renamed'
-WHERE [GlobalParameterValue] = 'datalake-qa'
-
-UPDATE [staging].[AzDataFactoryV2GlobalParametersProduction]
-SET [GlobalParameterValue] = 'datalake_renamed'
-WHERE [GlobalParameterValue] = 'datalake'
+UPDATE [staging].[AzDataFactoryV2GlobalParameters]
+SET [GlobalParameterValue] = 'global_parameter_value_renamed'
+WHERE [GlobalParameterValue] = 'global_parameter_value'
 
 /*second test batch*/
 INSERT INTO [staging].[AzDataFactoryV2DataFlow]
-VALUES ('insert_test_2_0e00d050-0000-0c00-0000-64fafdde0000', 'cdc-az-dev-datafactory', 
-'insert_test_2_DF_ICECurvesFlow', 'CDC-AZ-DEV-DataFactory')
+VALUES
+    ('insert_test_2_00000000-0000-0000-0000-000000000000', 'datafactory_name',
+        'insert_test_2_dataflow_name', 'resource_group_name')
 
 INSERT INTO [staging].[AzDataFactoryV2Dataset]
-VALUES ('insert_test_2_3a00b392-0000-0c00-0000-63eb5f670000', 'cdc-az-dev-datafactory',
-'insert_test_2_FundUnderlyingConnectionsSQL', 'CDC-AZ-DEV-DataFactory')
+VALUES
+    ('insert_test_2_00000000-0000-0000-0000-000000000000', 'datafactory_name',
+        'insert_test_2_dataset_name', 'resource_group_name')
 
-INSERT INTO [staging].[AzDataFactoryV2GlobalParametersDevelopment]
-VALUES ('insert_test_2_adls_container_name', 'insert_test_2_datalake-dev')
-
-INSERT INTO [staging].[AzDataFactoryV2GlobalParametersProduction]
-VALUES ('insert_test_2_adls_container_name', 'insert_test_2_datalake')
-
-INSERT INTO [staging].[AzDataFactoryV2GlobalParametersQA]
-VALUES ('insert_test_2_adls_container_name', 'insert_test_2_datalake-qa')
+INSERT INTO [staging].[AzDataFactoryV2GlobalParameters]
+VALUES
+    ('datafactory_name', 'resource_group_name', 'insert_test_2_global_parameter_key',
+        'insert_test_2_global_parameter')
 
 INSERT INTO [staging].[AzDataFactoryV2IntegrationRuntime]
-VALUES ('cdc-az-dev-datafactory', 'insert_test_2_managedIntegrationRuntime',	
-NULL, NULL, 'insert_test_2_Managed_renamed', 'CDC-AZ-DEV-DataFactory')
+VALUES
+    ('datafactory_name', 'insert_test_2_integration_runtime_name',
+        NULL, NULL, 'insert_test_2_integration_runtime_type', 'resource_group_name')
 
 INSERT INTO [staging].[AzDataFactoryV2LinkedService]
-VALUES ('insert_test_2_9a0035b8-0000-0c00-0000-62669f210000', 'cdc-az-dev-datafactory',	
-'insert_test_2_AzureSqlDB_Private', 'CDC-AZ-DEV-DataFactory')
+VALUES
+    ('insert_test_2_00000000-0000-0000-0000-000000000000', 'datafactory_name',
+        'insert_test_2_linked_service', 'resource_group_name')
 
 INSERT INTO [staging].[AzDatafactoryV2Pipeline]
-VALUES ('insert_test_2_0e000751-0000-0c00-0000-64fafde90000', 'cdc-az-dev-datafactory',
-'insert_test_2_Master', 'CDC-AZ-DEV-DataFactory')
+VALUES
+    ('insert_test_2_00000000-0000-0000-0000-000000000000', 'datafactory_name',
+        'insert_test_2_pipeline', 'resource_group_name')
 
 INSERT INTO [staging].[AzDataFactoryV2Trigger]
-VALUES ('insert_test_2_0e003751-0000-0c00-0000-64fafdef0000', 'cdc-az-dev-datafactory',
-'insert_test_2_Deal_CSV_Added', 'insert_test_2_Stopped', 'CDC-AZ-DEV-DataFactory')
+VALUES
+    ('insert_test_2_00000000-0000-0000-0000-000000000000', 'datafactory_name',
+        'insert_test_2_trigger_name', 'insert_test_2_runtime_state', 'resource_group_name')
 
 UPDATE [staging].[AzDataFactoryV2DataFlow]
-SET [name] = 'DF_FxRates_ADLS_Raw_to_Staged_renamed'
-WHERE [name] = 'DF_FxRates_ADLS_Raw_to_Staged'
+SET [name] = 'dataflow_2_name_renamed'
+WHERE [name] = 'dataflow_2_name'
 
 UPDATE [staging].[AzDataFactoryV2Dataset]
-SET [name] = 'UpdatedD365Records_renamed'
-WHERE [name] = 'UpdatedD365Records'
+SET [name] = 'dataset_2_name_renamed'
+WHERE [name] = 'dataset_2_name'
 
 UPDATE [staging].[AzDataFactoryV2IntegrationRuntime]
-SET [Type] = 'SelfHosted_renamed'
-WHERE [Type] = 'SelfHosted'
+SET [Type] = 'integration_runtime_2_type_renamed'
+WHERE [Type] = 'integration_runtime_2_type'
 
 UPDATE [staging].[AzDataFactoryV2LinkedService]
-SET [name] = 'DataLake_Private_renamed'
-WHERE [name] = 'DataLake_Private'
+SET [name] = 'linked_service_2_name_renamed'
+WHERE [name] = 'linked_service_2_name'
 
 UPDATE [staging].[AzDatafactoryV2Pipeline]
-SET [name] = 'eFront_to_Datalake_2_Organisations_renamed'
-WHERE [name] = 'eFront_to_Datalake_2_Organisations'
+SET [name] = 'pipeline_2_name_renamed'
+WHERE [name] = 'pipeline_2_name'
 
 UPDATE [staging].[AzDataFactoryV2Trigger]
-SET [name] = 'Fund_Underlying_Connection_CSV_Added_renamed'
-WHERE [name] = 'Fund_Underlying_Connection_CSV_Added'
+SET [name] = 'trigger_name_2_renamed'
+WHERE [name] = 'trigger_2_name'
 
-UPDATE [staging].[AzDataFactoryV2GlobalParametersDevelopment]
-SET [GlobalParameterValue] = 'cdc-efdev-dw02.cdcgroup.com_renamed'
-WHERE [GlobalParameterValue] = 'cdc-efdev-dw02.cdcgroup.com'
-
-UPDATE [staging].[AzDataFactoryV2GlobalParametersQA]
-SET [GlobalParameterValue] = 'eFrontMIG-DW_renamed'
-WHERE [GlobalParameterValue] = 'eFrontMIG-DW'
-
-UPDATE [staging].[AzDataFactoryV2GlobalParametersProduction]
-SET [GlobalParameterValue] = 'eFront_renamed'
-WHERE [GlobalParameterValue] = 'eFront'
+UPDATE [staging].[AzDataFactoryV2GlobalParameters]
+SET [GlobalParameterValue] = 'global_parameter_2_value_renamed'
+WHERE [GlobalParameterValue] = 'global_parameter_2_value'
 
 /*third test batch*/
 INSERT INTO [staging].[AzDataFactoryV2DataFlow]
-VALUES ('insert_test_3_0e00d050-0000-0c00-0000-64fafdde0000', 'cdc-az-dev-datafactory', 
-'insert_test_3_DF_ICECurvesFlow', 'CDC-AZ-DEV-DataFactory')
+VALUES
+    ('insert_test_3_00000000-0000-0000-0000-000000000000', 'datafactory_name',
+        'insert_test_3_dataflow_name', 'resource_group_name')
 
 INSERT INTO [staging].[AzDataFactoryV2Dataset]
-VALUES ('insert_test_3_3a00b392-0000-0c00-0000-63eb5f670000', 'cdc-az-dev-datafactory',
-'insert_test_3_FundUnderlyingConnectionsSQL', 'CDC-AZ-DEV-DataFactory')
+VALUES
+    ('insert_test_3_00000000-0000-0000-0000-000000000000', 'datafactory_name',
+        'insert_test_3_dataset_name', 'resource_group_name')
 
-INSERT INTO [staging].[AzDataFactoryV2GlobalParametersDevelopment]
-VALUES ('insert_test_3_adls_container_name', 'insert_test_3_datalake-dev')
-
-INSERT INTO [staging].[AzDataFactoryV2GlobalParametersProduction]
-VALUES ('insert_test_3_adls_container_name', 'insert_test_3_datalake')
-
-INSERT INTO [staging].[AzDataFactoryV2GlobalParametersQA]
-VALUES ('insert_test_3_adls_container_name', 'insert_test_3_datalake-qa')
+INSERT INTO [staging].[AzDataFactoryV2GlobalParameters]
+VALUES
+    ('datafactory_name', 'resource_group_name', 'insert_test_3_global_parameter_key',
+        'insert_test_3_global_parameter')
 
 INSERT INTO [staging].[AzDataFactoryV2IntegrationRuntime]
-VALUES ('cdc-az-dev-datafactory', 'insert_test_3_managedIntegrationRuntime',	
-NULL, NULL, 'insert_test_3_Managed_renamed', 'CDC-AZ-DEV-DataFactory')
+VALUES
+    ('datafactory_name', 'insert_test_3_integration_runtime_name',
+        NULL, NULL, 'insert_test_3_integration_runtime_type', 'resource_group_name')
 
 INSERT INTO [staging].[AzDataFactoryV2LinkedService]
-VALUES ('insert_test_3_9a0035b8-0000-0c00-0000-62669f210000', 'cdc-az-dev-datafactory',	
-'insert_test_3_AzureSqlDB_Private', 'CDC-AZ-DEV-DataFactory')
+VALUES
+    ('insert_test_3_00000000-0000-0000-0000-000000000000', 'datafactory_name',
+        'insert_test_3_linked_service', 'resource_group_name')
 
 INSERT INTO [staging].[AzDatafactoryV2Pipeline]
-VALUES ('insert_test_3_0e000751-0000-0c00-0000-64fafde90000', 'cdc-az-dev-datafactory',
-'insert_test_3_Master', 'CDC-AZ-DEV-DataFactory')
+VALUES
+    ('insert_test_3_00000000-0000-0000-0000-000000000000', 'datafactory_name',
+        'insert_test_3_pipeline', 'resource_group_name')
 
 INSERT INTO [staging].[AzDataFactoryV2Trigger]
-VALUES ('insert_test_3_0e003751-0000-0c00-0000-64fafdef0000', 'cdc-az-dev-datafactory',
-'insert_test_3_Deal_CSV_Added', 'insert_test_3_Stopped', 'CDC-AZ-DEV-DataFactory')
+VALUES
+    ('insert_test_3_00000000-0000-0000-0000-000000000000', 'datafactory_name',
+        'insert_test_3_trigger_name', 'insert_test_3_runtime_state', 'resource_group_name')
 
 UPDATE [staging].[AzDataFactoryV2DataFlow]
-SET [name] = 'DF_FxRates_ADLS_to_SQL_renamed'
-WHERE [name] = 'DF_FxRates_ADLS_to_SQL'
+SET [name] = 'dataflow_3_name_renamed'
+WHERE [name] = 'dataflow_3_name'
 
 UPDATE [staging].[AzDataFactoryV2Dataset]
-SET [name] = 'D365_Investments_renamed'
-WHERE [name] = 'D365_Investments'
+SET [name] = 'dataset_3_name_renamed'
+WHERE [name] = 'dataset_3_name'
 
 UPDATE [staging].[AzDataFactoryV2IntegrationRuntime]
-SET [authorizationtype] = 'RBAC_renamed'
-WHERE [authorizationtype] = NULL
+SET [authorizationtype] = 'integration_runtime_3_authorizationtype_renamed'
+WHERE [authorizationtype] = 'integration_runtime_3_authorizationtype'
 
 UPDATE [staging].[AzDataFactoryV2LinkedService]
-SET [name] = 'Dynamics_renamed'
-WHERE [name] = 'Dynamics'
+SET [name] = 'linked_service_3_name_renamed'
+WHERE [name] = 'linked_service_3_name'
 
 UPDATE [staging].[AzDatafactoryV2Pipeline]
-SET [name] = 'eFront_to_Datalake_7_Fund_Underlying_renamed'
-WHERE [name] = 'eFront_to_Datalake_7_Fund_Underlying'
+SET [name] = 'pipeline_3_name_renamed'
+WHERE [name] = 'pipeline_3_name'
 
 UPDATE [staging].[AzDataFactoryV2Trigger]
-SET [RuntimeState] = 'Stopped_renamed'
-WHERE [RuntimeState] = 'Stopped'
+SET [RuntimeState] = 'trigger_runtime_state_3_renamed'
+WHERE [RuntimeState] = 'trigger_runtime_state_3'
 
-UPDATE [staging].[AzDataFactoryV2GlobalParametersDevelopment]
-SET [GlobalParameterValue] = 'eFrontX-DW_renamed'
-WHERE [GlobalParameterValue] = 'eFrontX-DW'
-
-UPDATE [staging].[AzDataFactoryV2GlobalParametersQA]
-SET [GlobalParameterValue] = 'adfstagingqa_renamed'
-WHERE [GlobalParameterValue] = 'adfstagingqa'
-
-UPDATE [staging].[AzDataFactoryV2GlobalParametersProduction]
-SET [GlobalParameterValue] = 'adfsqlprod_renamed'
-WHERE [GlobalParameterValue] = 'adfsqlprod'
+UPDATE [staging].[AzDataFactoryV2GlobalParameters]
+SET [GlobalParameterValue] = 'global_parameter_3_value_renamed'
+WHERE [GlobalParameterValue] = 'global_parameter_3_value'
 
 /*fourth test batch*/
 INSERT INTO [staging].[AzDataFactoryV2DataFlow]
-VALUES ('insert_test_4_0e00d050-0000-0c00-0000-64fafdde0000', 'cdc-az-dev-datafactory', 
-'insert_test_4_DF_ICECurvesFlow', 'CDC-AZ-DEV-DataFactory')
+VALUES
+    ('insert_test_4_00000000-0000-0000-0000-000000000000', 'datafactory_name',
+        'insert_test_4_dataflow_name', 'resource_group_name')
 
 INSERT INTO [staging].[AzDataFactoryV2Dataset]
-VALUES ('insert_test_4_3a00b392-0000-0c00-0000-63eb5f670000', 'cdc-az-dev-datafactory',
-'insert_test_4_FundUnderlyingConnectionsSQL', 'CDC-AZ-DEV-DataFactory')
+VALUES
+    ('insert_test_4_00000000-0000-0000-0000-000000000000', 'datafactory_name',
+        'insert_test_4_dataset_name', 'resource_group_name')
 
-INSERT INTO [staging].[AzDataFactoryV2GlobalParametersDevelopment]
-VALUES ('insert_test_4_adls_container_name', 'insert_test_4_datalake-dev')
-
-INSERT INTO [staging].[AzDataFactoryV2GlobalParametersProduction]
-VALUES ('insert_test_4_adls_container_name', 'insert_test_4_datalake')
-
-INSERT INTO [staging].[AzDataFactoryV2GlobalParametersQA]
-VALUES ('insert_test_4_adls_container_name', 'insert_test_4_datalake-qa')
+INSERT INTO [staging].[AzDataFactoryV2GlobalParameters]
+VALUES
+    ('datafactory_name', 'resource_group_name', 'insert_test_4_global_parameter_key',
+        'insert_test_4_global_parameter')
 
 INSERT INTO [staging].[AzDataFactoryV2IntegrationRuntime]
-VALUES ('cdc-az-dev-datafactory', 'insert_test_4_managedIntegrationRuntime',	
-NULL, NULL, 'insert_test_4_Managed_renamed', 'CDC-AZ-DEV-DataFactory')
+VALUES
+    ('datafactory_name', 'insert_test_4_integration_runtime_name',
+        NULL, NULL, 'insert_test_4_integration_runtime_type', 'resource_group_name')
 
 INSERT INTO [staging].[AzDataFactoryV2LinkedService]
-VALUES ('insert_test_4_9a0035b8-0000-0c00-0000-62669f210000', 'cdc-az-dev-datafactory',	
-'insert_test_4_AzureSqlDB_Private', 'CDC-AZ-DEV-DataFactory')
+VALUES
+    ('insert_test_4_00000000-0000-0000-0000-000000000000', 'datafactory_name',
+        'insert_test_4_linked_service', 'resource_group_name')
 
 INSERT INTO [staging].[AzDatafactoryV2Pipeline]
-VALUES ('insert_test_4_0e000751-0000-0c00-0000-64fafde90000', 'cdc-az-dev-datafactory',
-'insert_test_4_Master', 'CDC-AZ-DEV-DataFactory')
+VALUES
+    ('insert_test_4_00000000-0000-0000-0000-000000000000', 'datafactory_name',
+        'insert_test_4_pipeline', 'resource_group_name')
 
 INSERT INTO [staging].[AzDataFactoryV2Trigger]
-VALUES ('insert_test_4_0e003751-0000-0c00-0000-64fafdef0000', 'cdc-az-dev-datafactory',
-'insert_test_4_Deal_CSV_Added', 'insert_test_4_Stopped', 'CDC-AZ-DEV-DataFactory')
+VALUES
+    ('insert_test_4_00000000-0000-0000-0000-000000000000', 'datafactory_name',
+        'insert_test_4_trigger_name', 'insert_test_4_runtime_state', 'resource_group_name')
 
 UPDATE [staging].[AzDataFactoryV2DataFlow]
-SET [name] = 'DF_FxRates_TriOnlyPairs_renamed'
-WHERE [name] = 'DF_FxRates_TriOnlyPairs'
+SET [name] = 'dataflow_4_name_renamed'
+WHERE [name] = 'dataflow_4_name'
 
 UPDATE [staging].[AzDataFactoryV2Dataset]
-SET [name] = 'D365_Fund_Underlying_Connections_renamed'
-WHERE [name] = 'D365_Fund_Underlying_Connections'
+SET [name] = 'dataset_4_name_renamed'
+WHERE [name] = 'dataset_4_name'
 
 UPDATE [staging].[AzDataFactoryV2IntegrationRuntime]
-SET [Description] = 'Description_renamed'
-WHERE [Description] = NULL
+SET [Description] = 'integration_runtime_4_description_renamed'
+WHERE [Description] = 'integration_runtime_4_description'
 
 UPDATE [staging].[AzDataFactoryV2LinkedService]
-SET [name] = 'eFront_Share_renamed'
-WHERE [name] = 'eFront_Share'
+SET [name] = 'linked_service_4_name_renamed'
+WHERE [name] = 'linked_service_4_name'
 
 UPDATE [staging].[AzDatafactoryV2Pipeline]
-SET [name] = 'eFront_to_Datalake_5_Fund_Managers_renamed'
-WHERE [name] = 'eFront_to_Datalake_5_Fund_Managers'
+SET [name] = 'pipeline_4_name_renamed'
+WHERE [name] = 'pipeline_4_name'
 
 UPDATE [staging].[AzDataFactoryV2Trigger]
-SET [name] = 'Investment_Activity_CSV_Added_renamed'
-WHERE [name] = 'Investment_Activity_CSV_Added'
+SET [name] = 'trigger_4_name_renamed'
+WHERE [name] = 'trigger_4_name'
 
-UPDATE [staging].[AzDataFactoryV2GlobalParametersDevelopment]
-SET [GlobalParameterValue] = 'eFrontX_renamed'
-WHERE [GlobalParameterValue] = 'eFrontX'
-
-UPDATE [staging].[AzDataFactoryV2GlobalParametersQA]
-SET [GlobalParameterValue] = 'adfqasql_renamed'
-WHERE [GlobalParameterValue] = 'adfqasql'
-
-UPDATE [staging].[AzDataFactoryV2GlobalParametersProduction]
-SET [GlobalParameterValue] = 'adfstagingprod_renamed'
-WHERE [GlobalParameterValue] = 'adfstagingprod'
+UPDATE [staging].[AzDataFactoryV2GlobalParameters]
+SET [GlobalParameterValue] = 'global_parameter_4_value_renamed'
+WHERE [GlobalParameterValue] = 'global_parameter_4_value'
 
 /*fifth test batch*/
 INSERT INTO [staging].[AzDataFactoryV2DataFlow]
-VALUES ('insert_test_5_0e00d050-0000-0c00-0000-64fafdde0000', 'cdc-az-dev-datafactory', 
-'insert_test_5_DF_ICECurvesFlow', 'CDC-AZ-DEV-DataFactory')
+VALUES
+    ('insert_test_5_00000000-0000-0000-0000-000000000000', 'datafactory_name',
+        'insert_test_5_dataflow_name', 'resource_group_name')
 
 INSERT INTO [staging].[AzDataFactoryV2Dataset]
-VALUES ('insert_test_5_3a00b392-0000-0c00-0000-63eb5f670000', 'cdc-az-dev-datafactory',
-'insert_test_5_FundUnderlyingConnectionsSQL', 'CDC-AZ-DEV-DataFactory')
+VALUES
+    ('insert_test_5_00000000-0000-0000-0000-000000000000', 'datafactory_name',
+        'insert_test_5_dataset_name', 'resource_group_name')
 
-INSERT INTO [staging].[AzDataFactoryV2GlobalParametersDevelopment]
-VALUES ('insert_test_5_adls_container_name', 'insert_test_5_datalake-dev')
-
-INSERT INTO [staging].[AzDataFactoryV2GlobalParametersProduction]
-VALUES ('insert_test_5_adls_container_name', 'insert_test_5_datalake')
-
-INSERT INTO [staging].[AzDataFactoryV2GlobalParametersQA]
-VALUES ('insert_test_5_adls_container_name', 'insert_test_5_datalake-qa')
+INSERT INTO [staging].[AzDataFactoryV2GlobalParameters]
+VALUES
+    ('datafactory_name', 'resource_group_name', 'insert_test_5_global_parameter_key',
+        'insert_test_5_global_parameter')
 
 INSERT INTO [staging].[AzDataFactoryV2IntegrationRuntime]
-VALUES ('cdc-az-dev-datafactory', 'insert_test_5_managedIntegrationRuntime',	
-NULL, NULL, 'insert_test_5_Managed_renamed', 'CDC-AZ-DEV-DataFactory')
+VALUES
+    ('datafactory_name', 'insert_test_5_integration_runtime_name',
+        NULL, NULL, 'insert_test_5_integration_runtime_type', 'resource_group_name')
 
 INSERT INTO [staging].[AzDataFactoryV2LinkedService]
-VALUES ('insert_test_5_9a0035b8-0000-0c00-0000-62669f210000', 'cdc-az-dev-datafactory',	
-'insert_test_5_AzureSqlDB_Private', 'CDC-AZ-DEV-DataFactory')
+VALUES
+    ('insert_test_5_00000000-0000-0000-0000-000000000000', 'datafactory_name',
+        'insert_test_5_linked_service', 'resource_group_name')
 
 INSERT INTO [staging].[AzDatafactoryV2Pipeline]
-VALUES ('insert_test_5_0e000751-0000-0c00-0000-64fafde90000', 'cdc-az-dev-datafactory',
-'insert_test_5_Master', 'CDC-AZ-DEV-DataFactory')
+VALUES
+    ('insert_test_5_00000000-0000-0000-0000-000000000000', 'datafactory_name',
+        'insert_test_4_pipeline', 'resource_group_name')
 
 INSERT INTO [staging].[AzDataFactoryV2Trigger]
-VALUES ('insert_test_5_0e003751-0000-0c00-0000-64fafdef0000', 'cdc-az-dev-datafactory',
-'insert_test_5_Deal_CSV_Added', 'insert_test_5_Stopped', 'CDC-AZ-DEV-DataFactory')
+VALUES
+    ('insert_test_5_00000000-0000-0000-0000-000000000000', 'datafactory_name',
+        'insert_test_5_trigger_name', 'insert_test_5_runtime_state', 'resource_group_name')
 
 UPDATE [staging].[AzDataFactoryV2DataFlow]
-SET [name] = 'DF_HolidayData_convert_eFront_renamed'
-WHERE [name] = 'DF_HolidayData_convert_eFront'
+SET [name] = 'dataflow_5_name_renamed'
+WHERE [name] = 'dataflow_5_name'
 
 UPDATE [staging].[AzDataFactoryV2Dataset]
-SET [name] = 'D365_Investment_Activities_renamed'
-WHERE [name] = 'D365_Investment_Activities'
+SET [name] = 'dataset_5_name_renamed'
+WHERE [name] = 'dataset_5_name'
 
 UPDATE [staging].[AzDataFactoryV2IntegrationRuntime]
-SET [Type] = 'SelfHosted_renamed'
-WHERE [Type] = 'SelfHosted'
+SET [name] = 'integration_runtime_5_name_renamed'
+WHERE [name] = 'integration_runtime_5_name'
 
 UPDATE [staging].[AzDataFactoryV2LinkedService]
-SET [name] = 'ICEsftpSite_renamed'
-WHERE [name] = 'ICEsftpSite'
+SET [name] = 'linked_service_5_name_renamed'
+WHERE [name] = 'linked_service_5_name'
 
 UPDATE [staging].[AzDatafactoryV2Pipeline]
-SET [name] = 'eFront_to_Datalake_6_Investment_Activites_renamed'
-WHERE [name] = 'eFront_to_Datalake_6_Investment_Activites'
+SET [name] = 'pipeline_5_name_renamed'
+WHERE [name] = 'pipeline_5_name'
 
 UPDATE [staging].[AzDataFactoryV2Trigger]
-SET [name] = 'Organisation_CSV_Added_renamed',
-[RuntimeState] = 'Running_renamed'
-WHERE [name] = 'Organisation_CSV_Added'
-AND [RuntimeState] = 'Stopped'
+SET [name] = 'trigger_5_name_renamed'
+WHERE [name] = 'trigger_5_name'
 
-UPDATE [staging].[AzDataFactoryV2GlobalParametersDevelopment]
-SET [GlobalParameterValue] = 'dropzone_renamed'
-WHERE [GlobalParameterValue] = 'dropzone'
-
-UPDATE [staging].[AzDataFactoryV2GlobalParametersQA]
-SET [GlobalParameterValue] = 'CDC_Salmon\IMPORT\FxRates\QA\_renamed'
-WHERE [GlobalParameterValue] = 'CDC_Salmon\IMPORT\FxRates\QA\'
-
-UPDATE [staging].[AzDataFactoryV2GlobalParametersProduction]
-SET [GlobalParameterValue] = 'cdc-ef-dw01.cdcgroup.com_renamed'
-WHERE [GlobalParameterValue] = 'cdc-ef-dw01.cdcgroup.com'
+UPDATE [staging].[AzDataFactoryV2GlobalParameters]
+SET [GlobalParameterValue] = 'global_parameter_5_value_renamed'
+WHERE [GlobalParameterValue] = 'global_parameter_5_value'
