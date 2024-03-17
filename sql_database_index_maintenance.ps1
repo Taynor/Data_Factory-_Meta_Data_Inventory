@@ -20,7 +20,7 @@
         N/A - but will add an output feature to monitor progress of the index rebuilds
 
     .LINK
-        https://dev.azure.com/biiuk/datafactory/_git/data_platform_maintenance
+        https://github.com/Taynor/DataFactoryInventory
 #>
 
 [CmdletBinding()]
@@ -57,11 +57,11 @@ SELECT 'ALTER INDEX ' + index_name + ' ON ' + table_name + ' REBUILD' FROM index
 
 # create the index rebuild statements
 $indexListQueryConfig = @{
-    'Database' = $databaseName
+    'Database'       = $databaseName
     'ServerInstance' = $sqlInstance
-    'Username' = $sqlUserName
-    'Password' = $sqlPassword
-    'Query' = $indexListQuery
+    'Username'       = $sqlUserName
+    'Password'       = $sqlPassword
+    'Query'          = $indexListQuery
 } 
 
 # variable to hold the results of capturing the index rebuild statements
@@ -78,12 +78,12 @@ foreach ($so in $scriptOutput) {
     }
     elseif ($soType -eq 'String') {
         $indexRebuildQueryConfig = @{
-            'Database' = $databaseName
+            'Database'       = $databaseName
             'ServerInstance' = $sqlInstance
-            'Username' = $sqlUserName
-            'Password' = $sqlPassword
-            'Query' = $so
-            } 
+            'Username'       = $sqlUserName
+            'Password'       = $sqlPassword
+            'Query'          = $so
+        } 
         Invoke-Sqlcmd @indexRebuildQueryConfig
     }
 }
