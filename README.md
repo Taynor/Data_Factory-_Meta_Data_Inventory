@@ -1,4 +1,5 @@
 # Data Factory Inventory
+<<<<<<< HEAD
 
 The purpose of the project is to extract meta data from Azure Data Factory objects, and load it into a Staging schema using SQL server tables. The data can then be pulled into a History schema, where SCD patterns are applied to build the historical data context. The Staging and History schemas will need to be created before building the Data Factory Inventory tables. The historical context tracks the following attributes of the SCD pattern:
 
@@ -13,3 +14,5 @@ The project also includes scripts to help migrate individual tables from an Azur
 The project structure:
 
 -
+=======
+>>>>>>> 83027fb6259c13c2442d508e250112b8f33c4d84
