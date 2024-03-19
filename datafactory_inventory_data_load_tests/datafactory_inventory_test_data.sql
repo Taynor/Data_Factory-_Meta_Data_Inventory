@@ -65,6 +65,7 @@ SET [GlobalParameterValue] = 'global_parameter_value_renamed'
 WHERE [GlobalParameterValue] = 'global_parameter_value'
 
 /*second test batch*/
+/*INSERT test values*/
 INSERT INTO [staging].[AzDataFactoryV2DataFlow]
 VALUES
     ('insert_test_2_00000000-0000-0000-0000-000000000000', 'datafactory_name',
@@ -100,6 +101,7 @@ VALUES
     ('insert_test_2_00000000-0000-0000-0000-000000000000', 'datafactory_name',
         'insert_test_2_trigger_name', 'insert_test_2_runtime_state', 'resource_group_name')
 
+/*UPDATE test values*/
 UPDATE [staging].[AzDataFactoryV2DataFlow]
 SET [name] = 'dataflow_2_name_renamed'
 WHERE [name] = 'dataflow_2_name'
@@ -129,6 +131,7 @@ SET [GlobalParameterValue] = 'global_parameter_2_value_renamed'
 WHERE [GlobalParameterValue] = 'global_parameter_2_value'
 
 /*third test batch*/
+/*INSERT test values*/
 INSERT INTO [staging].[AzDataFactoryV2DataFlow]
 VALUES
     ('insert_test_3_00000000-0000-0000-0000-000000000000', 'datafactory_name',
@@ -164,6 +167,7 @@ VALUES
     ('insert_test_3_00000000-0000-0000-0000-000000000000', 'datafactory_name',
         'insert_test_3_trigger_name', 'insert_test_3_runtime_state', 'resource_group_name')
 
+/*UPDATE test values*/
 UPDATE [staging].[AzDataFactoryV2DataFlow]
 SET [name] = 'dataflow_3_name_renamed'
 WHERE [name] = 'dataflow_3_name'
@@ -193,6 +197,7 @@ SET [GlobalParameterValue] = 'global_parameter_3_value_renamed'
 WHERE [GlobalParameterValue] = 'global_parameter_3_value'
 
 /*fourth test batch*/
+/*INSERT test values*/
 INSERT INTO [staging].[AzDataFactoryV2DataFlow]
 VALUES
     ('insert_test_4_00000000-0000-0000-0000-000000000000', 'datafactory_name',
@@ -228,6 +233,7 @@ VALUES
     ('insert_test_4_00000000-0000-0000-0000-000000000000', 'datafactory_name',
         'insert_test_4_trigger_name', 'insert_test_4_runtime_state', 'resource_group_name')
 
+/*UPDATE test values*/
 UPDATE [staging].[AzDataFactoryV2DataFlow]
 SET [name] = 'dataflow_4_name_renamed'
 WHERE [name] = 'dataflow_4_name'
@@ -257,6 +263,7 @@ SET [GlobalParameterValue] = 'global_parameter_4_value_renamed'
 WHERE [GlobalParameterValue] = 'global_parameter_4_value'
 
 /*fifth test batch*/
+/*INSERT test values*/
 INSERT INTO [staging].[AzDataFactoryV2DataFlow]
 VALUES
     ('insert_test_5_00000000-0000-0000-0000-000000000000', 'datafactory_name',
@@ -292,6 +299,7 @@ VALUES
     ('insert_test_5_00000000-0000-0000-0000-000000000000', 'datafactory_name',
         'insert_test_5_trigger_name', 'insert_test_5_runtime_state', 'resource_group_name')
 
+/*UPDATE test values*/
 UPDATE [staging].[AzDataFactoryV2DataFlow]
 SET [name] = 'dataflow_5_name_renamed'
 WHERE [name] = 'dataflow_5_name'
