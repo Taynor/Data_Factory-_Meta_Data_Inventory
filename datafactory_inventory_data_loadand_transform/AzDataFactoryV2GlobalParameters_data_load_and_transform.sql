@@ -3,20 +3,11 @@ Pull all new records from the staging schema table into the history schema
 */
 INSERT INTO [history].[AzDataFactoryV2GlobalParameters]
 ([DataFactoryName], [ResourceGroupName], [GlobalParameterKey], [GlobalParameterValue], [RecordCreationDate])
-SELECT st.[DataFactoryName], st.[ResourceGroupName], st.[GlobalParameterKey], st.[GlobalParameterValue], GETDATE()
-FROM [history].[AzDataFactoryV2GlobalParameters] AS ht
-RIGHT OUTER JOIN [staging].[AzDataFactoryV2GlobalParameters] AS st
-ON ht.[GlobalParameterKey] = st.[GlobalParameterKey]
-WHERE ht.[GlobalParameterKey] IS NULL
-AND st.[GlobalParameterKey] IS NOT NULL
-
-/*Performance tune against this query
 SELECT [DataFactoryName], [ResourceGroupName], [GlobalParameterKey], [GlobalParameterValue], GETDATE()
 FROM [staging].[AzDataFactoryV2GlobalParameters] AS s
-WHERE [GlobalParameterKey] NOT IN (
-	SELECT [GlobalParameterKey]
+WHERE [GlobalParameterValue] NOT IN (
+	SELECT [GlobalParameterValue]
 	FROM [history].[AzDataFactoryV2GlobalParameters])
-*/
 
 /*
 Pull data from the staging schema table into the history schema table.

@@ -2,51 +2,68 @@
 Pull all new records from the staging schema table into the history schema 
 */
 INSERT INTO [history].[AzDataFactoryV2IntegrationRuntime]
-	([DataFactoryName], [Name], [AuthorizationType], [Description], [Type], [ResourceGroupName], [RecordCreationDate])
-SELECT st.[DataFactoryName], st.[Name], CONVERT(NVARCHAR(MAX), st.[AuthorizationType]), CONVERT(NVARCHAR(MAX), st.[Description]), st.[Type], st.[ResourceGroupName], GETDATE()
-FROM [history].[AzDataFactoryV2IntegrationRuntime] AS ht
-	RIGHT OUTER JOIN [staging].[AzDataFactoryV2IntegrationRuntime] AS st
-	ON ht.[Name] = st.[Name]
-WHERE ht.[Name] IS NULL
-	AND st.[Name] IS NOT NULL
+([DataFactoryName], [Name], [AuthorizationType], [Description], [Type], [ResourceGroupName], [RecordCreationDate])
+SELECT [DataFactoryName], [Name], [AuthorizationType], [Description], [Type], [ResourceGroupName], GETDATE()
+FROM [staging].[AzDataFactoryV2IntegrationRuntime_test] AS s
+WHERE EXISTS (
+	SELECT [DataFactoryName], [Name], [AuthorizationType], [Description], [Type], [ResourceGroupName]
+	FROM [history].[AzDataFactoryV2IntegrationRuntime] AS h
+	WHERE s.[AuthorizationType] <> h.[AuthorizationType])
+
+INSERT INTO [history].[AzDataFactoryV2IntegrationRuntime]
+([DataFactoryName], [Name], [AuthorizationType], [Description], [Type], [ResourceGroupName], [RecordCreationDate])
+SELECT [DataFactoryName], [Name], [AuthorizationType], [Description], [Type], [ResourceGroupName], GETDATE()
+FROM [staging].[AzDataFactoryV2IntegrationRuntime_test] AS s
+WHERE EXISTS (
+	SELECT [DataFactoryName], [Name], [AuthorizationType], [Description], [Type], [ResourceGroupName]
+	FROM [history].[AzDataFactoryV2IntegrationRuntime] AS h
+	WHERE s.[Description] <> h.[Description])
+
+INSERT INTO [history].[AzDataFactoryV2IntegrationRuntime]
+([DataFactoryName], [Name], [AuthorizationType], [Description], [Type], [ResourceGroupName], [RecordCreationDate])
+SELECT [DataFactoryName], [Name], [AuthorizationType], [Description], [Type], [ResourceGroupName], GETDATE()
+FROM [staging].[AzDataFactoryV2IntegrationRuntime_test] AS s
+WHERE EXISTS (
+	SELECT [DataFactoryName], [Name], [AuthorizationType], [Description], [Type], [ResourceGroupName]
+	FROM [history].[AzDataFactoryV2IntegrationRuntime] AS h
+	WHERE s.[Type] <> h.[Type])		
 
 /*
 Pull data from the staging schema table into the history schema table.
 Inserting data where the unique idenitfier Name matches in both 
 the staging and history schema table, but the editable column does 
 not match the value in both staging and history schema tables.
+
+Use for in place value change, not a new record INSERTED
 */
-INSERT INTO [history].[AzDataFactoryV2IntegrationRuntime]
-	([DataFactoryName], [Name], [AuthorizationType], [Description], [Type], [ResourceGroupName], [RecordCreationDate])
-SELECT [DataFactoryName], [Name], CONVERT(NVARCHAR(MAX), [AuthorizationType]), CONVERT(NVARCHAR(MAX), [Description]),
-	[Type], [ResourceGroupName], GETDATE()
+INSERT INTO [history].[AzDataFactoryV2IntegrationRuntime] 
+([DataFactoryName], [Name], [AuthorizationType], [Description], [Type], [ResourceGroupName], [RecordCreationDate])
+SELECT [DataFactoryName], [Name],  CONVERT(NVARCHAR(MAX), [AuthorizationType]), CONVERT(NVARCHAR(MAX), [Description]), [Type], [ResourceGroupName], GETDATE()
 FROM [staging].[AzDataFactoryV2IntegrationRuntime] AS s
 WHERE EXISTS (
 	SELECT [DataFactoryName], [Name], [AuthorizationType], [Description], [Type], [ResourceGroupName]
-FROM [history].[AzDataFactoryV2IntegrationRuntime] AS h
-WHERE s.[Name] = h.[Name]
+	FROM [history].[AzDataFactoryV2IntegrationRuntime] AS h
+	WHERE s.[Name] = h.[Name]
 	AND CONVERT(NVARCHAR(MAX), s.[AuthorizationType]) <> h.[AuthorizationType])
 
-INSERT INTO [history].[AzDataFactoryV2IntegrationRuntime]
-	([DataFactoryName], [Name], [AuthorizationType], [Description], [Type], [ResourceGroupName])
-SELECT [DataFactoryName], [Name], CONVERT(NVARCHAR(MAX), [AuthorizationType]), CONVERT(NVARCHAR(MAX), [Description]),
-	[Type], [ResourceGroupName]
+INSERT INTO [history].[AzDataFactoryV2IntegrationRuntime] 
+([DataFactoryName], [Name], [AuthorizationType], [Description], [Type], [ResourceGroupName])
+SELECT [DataFactoryName], [Name], CONVERT(NVARCHAR(MAX), [AuthorizationType]), CONVERT(NVARCHAR(MAX), [Description]), [Type], [ResourceGroupName]
 FROM [staging].[AzDataFactoryV2IntegrationRuntime] AS s
 WHERE EXISTS (
 	SELECT [DataFactoryName], [Name], [AuthorizationType], [Description], [Type], [ResourceGroupName]
-FROM [history].[AzDataFactoryV2IntegrationRuntime] AS h
-WHERE s.[Name] = h.[Name]
+	FROM [history].[AzDataFactoryV2IntegrationRuntime] AS h
+	WHERE s.[Name] = h.[Name]
 	AND CONVERT(NVARCHAR(MAX), s.[Description]) <> h.[Description])
 
-INSERT INTO [history].[AzDataFactoryV2IntegrationRuntime]
-	([DataFactoryName], [Name], [AuthorizationType], [Description], [Type], [ResourceGroupName])
-SELECT [DataFactoryName], [Name], CONVERT(NVARCHAR(MAX), [AuthorizationType]), CONVERT(NVARCHAR(MAX), [Description]),
-	[Type], [ResourceGroupName]
+INSERT INTO [history].[AzDataFactoryV2IntegrationRuntime] 
+([DataFactoryName], [Name], [AuthorizationType], [Description], [Type], [ResourceGroupName])
+SELECT [DataFactoryName], [Name], CONVERT(NVARCHAR(MAX), [AuthorizationType]), CONVERT(NVARCHAR(MAX), [Description]), [Type], [ResourceGroupName]
 FROM [staging].[AzDataFactoryV2IntegrationRuntime] AS s
 WHERE EXISTS (
 	SELECT [DataFactoryName], [Name], [AuthorizationType], [Description], [Type], [ResourceGroupName]
-FROM [history].[AzDataFactoryV2IntegrationRuntime] AS h
-WHERE s.[Name] = h.[Name]
+	FROM [history].[AzDataFactoryV2IntegrationRuntime] AS h
+	WHERE s.[Name] = h.[Name]
 	AND s.[Type] <> h.[Type])
 
 /*
@@ -61,8 +78,8 @@ SET [HistoricalAuthorizationType] = ht.[AuthorizationType],
 [IsCurrent] = 1,
 [HistoricalAuthorizationTypeDate] = getdate()
 FROM [history].[AzDataFactoryV2IntegrationRuntime] AS ht
-	JOIN [staging].[AzDataFactoryV2IntegrationRuntime] AS st
-	ON ht.[Name] = st.[Name]
+JOIN [staging].[AzDataFactoryV2IntegrationRuntime] AS st
+ON ht.[Name] = st.[Name]
 WHERE ht.[AuthorizationType] <> CONVERT(VARCHAR(MAX), st.[AuthorizationType])
 
 UPDATE [history].[AzDataFactoryV2IntegrationRuntime] 
@@ -71,8 +88,8 @@ SET [HistoricalDescription] = ht.[Description],
 [IsCurrent] = 1,
 [HistoricalDescriptionDate] = getdate()
 FROM [history].[AzDataFactoryV2IntegrationRuntime] AS ht
-	JOIN [staging].[AzDataFactoryV2IntegrationRuntime] AS st
-	ON ht.[Name] = st.[Name]
+JOIN [staging].[AzDataFactoryV2IntegrationRuntime] AS st
+ON ht.[Name] = st.[Name]
 WHERE ht.[Description] <> CONVERT(VARCHAR(MAX), st.[Description])
 
 UPDATE [history].[AzDataFactoryV2IntegrationRuntime] 
@@ -81,8 +98,8 @@ SET [HistoricalType] = ht.[Type],
 [IsCurrent] = 1,
 [HistoricalTypeDate] = getdate()
 FROM [history].[AzDataFactoryV2IntegrationRuntime] AS ht
-	JOIN [staging].[AzDataFactoryV2IntegrationRuntime] AS st
-	ON ht.[Name] = st.[Name]
+JOIN [staging].[AzDataFactoryV2IntegrationRuntime] AS st
+ON ht.[Name] = st.[Name]
 WHERE ht.[Type] <> st.[Type]
 
 /*
@@ -134,8 +151,8 @@ history schema table is by default the current one.
 */
 UPDATE [history].[AzDataFactoryV2Dataset] 
 SET [IsCurrent] = 1
-WHERE [RecordCreationDate] = (SELECT MAX([RecordCreationDate])
-FROM [history].[AzDataFactoryV2Dataset])
+WHERE [RecordCreationDate] = (SELECT MAX([RecordCreationDate]) 
+							FROM [history].[AzDataFactoryV2Dataset])
 
 /*
 Set the iscurrent flag to 0 to ensure this record is not the current
@@ -146,16 +163,16 @@ UPDATE [history].[AzDataFactoryV2IntegrationRuntime]
 SET [IsCurrent] = 0,
 [RecordEndDate] = getdate()
 WHERE [HistoricalAuthorizationType] <> [AuthorizationType]
-	AND [HistoricalAuthorizationType] IS NOT NULL
+AND [HistoricalAuthorizationType] IS NOT NULL
 
 UPDATE [history].[AzDataFactoryV2IntegrationRuntime] 
 SET [IsCurrent] = 0,
 [RecordEndDate] = getdate()
 WHERE [HistoricalDescription] <> [Description]
-	AND [HistoricalDescription] IS NOT NULL
+AND [HistoricalDescription] IS NOT NULL
 
 UPDATE [history].[AzDataFactoryV2IntegrationRuntime] 
 SET [IsCurrent] = 0,
 [RecordEndDate] = getdate()
 WHERE [HistoricalType] <> [Type]
-	AND [HistoricalType] IS NOT NULL
+AND [HistoricalType] IS NOT NULL
